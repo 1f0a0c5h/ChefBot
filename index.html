@@ -1,118 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chef Bot</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background: #d35400;
-            color: white;
-            padding: 1.5rem 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            background: #333;
-            padding: 1rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 2rem;
-            max-width: 900px;
-            margin: auto;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background: #333;
-            color: white;
-            margin-top: 2rem;
-        }
-        .card {
-            background: white;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #d35400;
-        }
-        ul {
-            padding-left: 1.5rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>掃描QR Code加好友</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      position: relative;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+      width: 100%;
+    }
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .left img {
+      max-width: 80%;
+      max-height: 80%;
+      opacity: 0.6;
+    }
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #ff6f61;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+    }
+    #qrImage {
+      max-width: 400px;
+      max-height: 300px;
+      margin-bottom: 20px;
+    }
+    .footer {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Chef Bot</h1>
-        <p>Your AI-powered cooking assistant for personalized recipes.</p>
-    </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <main>
-        <section id="about">
-            <h2>About Chef Bot</h2>
-            <p>Chef Bot is an AI-powered chatbot designed to help you explore and create delicious recipes tailored to your preferences. Whether you are a seasoned cook or a beginner, Chef Bot can guide you through every step of the cooking process.</p>
-        </section>
-        <section id="features">
-            <h2>Features</h2>
-            <div class="card">
-                <h3>Personalized Recipe Suggestions</h3>
-                <p>Chef Bot provides multiple preparation methods and unique highlights for any dish you want to cook.</p>
-            </div>
-            <div class="card">
-                <h3>Step-by-Step Instructions</h3>
-                <p>Follow easy-to-understand recipes customized to your chosen method and ingredients.</p>
-            </div>
-            <div class="card">
-                <h3>Seamless Line Integration</h3>
-                <p>Interact with Chef Bot directly on the Line messaging platform for a smooth user experience.</p>
-            </div>
-        </section>
-        <section id="workflow">
-            <h2>How It Works</h2>
-            <ol>
-                <li><strong>Step 1:</strong> Tell Chef Bot the dish you want to make.</li>
-                <li><strong>Step 2:</strong> Receive multiple preparation methods and choose your preferred one.</li>
-                <li><strong>Step 3:</strong> Get a detailed recipe with step-by-step instructions.</li>
-                <li><strong>Step 4:</strong> Start cooking and enjoy your meal!</li>
-            </ol>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>If you have any questions, suggestions, or collaboration ideas, feel free to get in touch:</p>
-            <ul>
-                <li>Email: chefbot.support@example.com</li>
-                <li>GitHub: <a href="https://github.com/yourusername/chef-bot" target="_blank">github.com/yourusername/chef-bot</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Chef Bot. All Rights Reserved.</p>
-    </footer>
+  <div class="header">ChefBot: Deal ur meal</div>
+  <div class="container">
+    <div class="left">
+      <img src="https://i.imgur.com/4iw17WK.png" alt="Chef Image">
+    </div>
+    <div class="right">
+      <h1>掃描QR Code加好友</h1>
+      <img id="qrImage" src="https://i.imgur.com/LU35DC5.png" alt="QR Code Image">
+    </div>
+  </div>
+  <div class="footer">國立台北大學資訊管理研究所</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script>
+    const resultDiv = document.getElementById("result");
+  </script>
 </body>
 </html>
